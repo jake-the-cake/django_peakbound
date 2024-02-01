@@ -34,6 +34,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    '_api.middlewares.VisitorMiddleware',
 ]
 ROOT_URLCONF = 'flamingo.urls'
 TEMPLATES = [

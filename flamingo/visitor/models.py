@@ -8,6 +8,10 @@ from _utils.codes import createCharacterCode
 	should end when the browser is closed.
 '''
 class Session(models.Model):
+	session_key = models.CharField(
+		max_length = 50,
+		default = createCharacterCode( length = 36 ),
+	)
 	ip = models.CharField(
 		max_length = 15,
 		default = '000.000.000.000'
@@ -27,10 +31,7 @@ class Visitor(models.Model):
 		default = createCharacterCode(),
 		unique = True
 	)
-	sessions = models.ManyToManyField(
-		Session,
-		on_delete = models.PROTECT,
-	)
+	sessions = models.ManyToManyField( Session	)
 	sessionCount = models.IntegerField(
 		default = 1
 	)
@@ -65,10 +66,7 @@ class Customer(models.Model):
 		default = createCharacterCode(),
 		unique = True,
 	)
-	visitorAccounts = models.ManyToManyField(
-		Visitor,
-		on_delete = models.PROTECT,
-	)
+	visitorAccounts = models.ManyToManyField( Visitor )
 	email = models.EmailField()
 	created = models.DateTimeField( auto_now_add = True )
 	userProfile = models.ForeignKey(
