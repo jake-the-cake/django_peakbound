@@ -7,10 +7,12 @@
 	<title>
 		{% block pageTitle %}Welcome{% endblock %} | Peak Bound Journeys {% block subPageTitle %}{% endblock %}
 	</title>
+	<link rel="stylesheet" href="{% static 'css/quiggle.css' %}">
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 	<script href="{% static 'js/main.js' %}" defer></script>
 </head>
 <body>
+	{% include 'components/navbar.html' with text=text %}
 	{% block content %}
 		No content.
 	{% endblock %}
