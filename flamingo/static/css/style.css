@@ -29,7 +29,7 @@
 	--secondary-800: hsl(var(--secondary-hsl), .8);
 	--secondary-900: hsl(var(--secondary-hsl), .9);
 
-	--light-l: 100%;
+	--light-l: 95%;
 	--light-hsl: var(--primary-h), var(--primary-s), var(--light-l);
 	--light: hsl(var(--light-hsl));
 	--light-100: hsl(var(--light-hsl), .1);
@@ -52,14 +52,35 @@
 body {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 	width: 100vw;
 	min-height: 100vh;
-	background-image: linear-gradient(to bottom, var(--secondary-600), var(--secondary)), url('/static/img/washington1.jpg');
-	background-size: cover;
-	background-position: center center;
-	background-attachment: fixed;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+main {
+	background-image: linear-gradient(to bottom, var(--secondary-600), var(--secondary)), url('/static/img/washington1.jpg');
+	background-position: center center;
+	background-size: cover;
+	background-attachment: fixed;
+	flex: 1;
+}
+
+.main-card {
+	border: 2px solid var(--primary);
+	margin: 1rem auto;
+	width: 90vw;
+	background-color: var(--light-800);
+	max-width: 1000px;
+	padding: 1rem;
+	border-radius: .5rem;
+	display: grid;
+	place-items: center;
+}
+
+footer {
+	background-image: linear-gradient(to bottom, var(--secondary), var(--primary) 20%);
+	padding-block: 1rem;
+	color: var(--light);
 }
 
 h1, p {

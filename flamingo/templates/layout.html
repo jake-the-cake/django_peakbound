@@ -13,8 +13,13 @@
 </head>
 <body>
 	{% include 'components/navbar.html' with text=text %}
-	{% block content %}
-		No content.
-	{% endblock %}
+	<main>
+		<div class='main-card'>
+				{% block content %}
+					No content.
+				{% endblock %}
+		</div>
+	</main>
+	<footer>footer</footer>
 </body>
 </html>
