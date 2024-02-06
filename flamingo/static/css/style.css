@@ -192,15 +192,16 @@ button {
 	--border-color: var(--primary);
 	background-image: linear-gradient(
 		15deg,
-		var(--dark-100),
-		var(--secondary-200),
-		var(--light-100)
+		var(--dark-200),
+		var(--primary-300),
+		var(--light-200)
 	);
 	border-radius: 9999px;
 	border-style: solid;
 	border-width: 2px;
 	border-color: var(--border-color);
 	cursor: pointer;
+	transition: background .2s linear;
 }
 
 .btn-primary {
@@ -222,3 +223,25 @@ button {
 .btn-accent:hover { background-color: var(--accent);}
 .btn-light:hover { background-color: var(--light);}
 .btn-dark:hover { background-color: var(--dark);}
+
+.item-grid {
+	--columns: 4;
+	display: grid;
+	grid-template-columns: repeat(var(--columns), minmax(200px, 1fr));
+	grid-auto-rows: auto;
+}
+
+.item-card {
+	background-color: white;
+	background-image: linear-gradient(0deg, var(--dark-100), var(--dark-700));
+}
+
+.grainy {
+	background-image: url('/static/img/grainy.png');
+	background-size: 100%;
+	background-position: center;
+}
+
+@media only screen and (max-width: 1050px) {.item-grid{ --columns: 3;}}
+@media only screen and (max-width: 800px) {.item-grid{ --columns: 2;}}
+@media only screen and (max-width: 550px) {.item-grid{ --columns: 1;}}

@@ -6,10 +6,10 @@ PBJ Trift Home
 {% endblock %}
 
 {% block content %}
-	<h1 class="w-100">Thifting From Home!</h1>
-	<section id="new-arrivals" class='white b-sm py-2 px-4 flex-col'>
+	<h1 class="w-100 mb-6">Thifting From Home!</h1>
+	<section id="new-arrivals" class='grainy white b-sm py-2 px-4 flex-col w-min shadow-sm'>
 		<h3>New Arrivals</h3>
-		<div class="flex gap-4 flex-wrap">
+		<div class="item-grid gap-4">
 			{% for item in items %}
 				{% include 'components/item-card.html' with item=item %}
 			{% endfor %}

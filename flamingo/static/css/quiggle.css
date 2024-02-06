@@ -1,6 +1,9 @@
 .flex {
 	display: flex;
 }
+.inline-flex{ display: inline-flex;}
+.inline-block{ display: inline-block;}
+.inline-flex-col{ display: inline-flex; flex-direction: column;}
 
 .flex-col {
 	display: flex;
@@ -186,9 +189,15 @@
 	width: 100%;
 }
 
+.w-auto {
+	width: auto;
+}
+.w-min { width: min-content;}
+
 .min-w-250 {
 	min-width: 250px;
 }
+.max-w-100 { max-width: 100%;}
 
 /* MARGIN VARIATIONS */
 /* margin */
@@ -1051,3 +1060,5 @@
 .text-hover-dark:hover {
 	color: hsl(var(--dark));
 }
+
+.pill { border-radius: 9999px;}
