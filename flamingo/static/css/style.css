@@ -84,7 +84,7 @@ footer {
 }
 
 h1, p {
-	text-align: center;
+	/* text-align: center; */
 }
 
 .primary { background-color: var(--primary);}
