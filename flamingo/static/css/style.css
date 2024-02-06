@@ -242,6 +242,23 @@ button {
 	background-position: center;
 }
 
+.page-arrow {
+	padding: .25rem;
+	border-radius: 50%;
+	height: 1rem;
+	width: 1rem;
+	border: 1px solid var(--accent);
+	background-color: var(--accent-300);
+	color: var(--primary-600);
+	text-decoration: none;
+	display: grid;
+	place-content: center;
+}
+
+.left-arrow {
+	transform: rotate(180deg);
+}
+
 @media only screen and (max-width: 1050px) {.item-grid{ --columns: 3;}}
 @media only screen and (max-width: 800px) {.item-grid{ --columns: 2;}}
 @media only screen and (max-width: 550px) {.item-grid{ --columns: 1;}}
