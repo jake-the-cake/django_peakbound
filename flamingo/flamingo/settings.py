@@ -21,7 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 		
     'visitor',       
-
+    'shop',       
 	'article',
 	
     'rest_framework'

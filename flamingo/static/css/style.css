@@ -29,6 +29,21 @@
 	--secondary-800: hsl(var(--secondary-hsl), .8);
 	--secondary-900: hsl(var(--secondary-hsl), .9);
 
+	--accent-h: 22;
+	--accent-s: 92%;
+	--accent-l: 40%;
+	--accent-hsl: var(--accent-h), var(--accent-s), var(--accent-l);
+	--accent: hsl(var(--accent-hsl));
+	--accent-100: hsl(var(--accent-hsl), .1);
+	--accent-200: hsl(var(--accent-hsl), .2);
+	--accent-300: hsl(var(--accent-hsl), .3);
+	--accent-400: hsl(var(--accent-hsl), .4);
+	--accent-500: hsl(var(--accent-hsl), .5);
+	--accent-600: hsl(var(--accent-hsl), .6);
+	--accent-700: hsl(var(--accent-hsl), .7);
+	--accent-800: hsl(var(--accent-hsl), .8);
+	--accent-900: hsl(var(--accent-hsl), .9);
+
 	--light-l: 95%;
 	--light-hsl: var(--primary-h), var(--primary-s), var(--light-l);
 	--light: hsl(var(--light-hsl));
@@ -41,6 +56,19 @@
 	--light-700: hsl(var(--light-hsl), .7);
 	--light-800: hsl(var(--light-hsl), .8);
 	--light-900: hsl(var(--light-hsl), .9);
+
+	--dark-l: 5%;
+	--dark-hsl: var(--primary-h), var(--primary-s), var(--dark-l);
+	--dark: hsl(var(--dark-hsl));
+	--dark-100: hsl(var(--dark-hsl), .1);
+	--dark-200: hsl(var(--dark-hsl), .2);
+	--dark-300: hsl(var(--dark-hsl), .3);
+	--dark-400: hsl(var(--dark-hsl), .4);
+	--dark-500: hsl(var(--dark-hsl), .5);
+	--dark-600: hsl(var(--dark-hsl), .6);
+	--dark-700: hsl(var(--dark-hsl), .7);
+	--dark-800: hsl(var(--dark-hsl), .8);
+	--dark-900: hsl(var(--dark-hsl), .9);
 }
 
 * {
@@ -83,10 +111,6 @@ footer {
 	color: var(--light);
 }
 
-h1, p {
-	/* text-align: center; */
-}
-
 .primary { background-color: var(--primary);}
 .primary-100 { background-color: var(--primary-100);}
 .primary-200 { background-color: var(--primary-200);}
@@ -109,10 +133,92 @@ h1, p {
 .secondary-800 { background-color: var(--secondary-800);}
 .secondary-900 { background-color: var(--secondary-900);} 
 
+.accent { background-color: var(--accent);}
+.accent-100 { background-color: var(--accent-100);}
+.accent-200 { background-color: var(--accent-200);}
+.accent-300 { background-color: var(--accent-300);}
+.accent-400 { background-color: var(--accent-400);}
+.accent-500 { background-color: var(--accent-500);}
+.accent-600 { background-color: var(--accent-600);}
+.accent-700 { background-color: var(--accent-700);}
+.accent-800 { background-color: var(--accent-800);}
+.accent-900 { background-color: var(--accent-900);} 
+
+.white { background-color: whitesmoke;}
+.light { background-color: var(--light);}
+.light-100 { background-color: var(--light-100);}
+.light-200 { background-color: var(--light-200);}
+.light-300 { background-color: var(--light-300);}
+.light-400 { background-color: var(--light-400);}
+.light-500 { background-color: var(--light-500);}
+.light-600 { background-color: var(--light-600);}
+.light-700 { background-color: var(--light-700);}
+.light-800 { background-color: var(--light-800);}
+.light-900 { background-color: var(--light-900);} 
+
+.dark { background-color: var(--dark);}
+.dark-100 { background-color: var(--dark-100);}
+.dark-200 { background-color: var(--dark-200);}
+.dark-300 { background-color: var(--dark-300);}
+.dark-400 { background-color: var(--dark-400);}
+.dark-500 { background-color: var(--dark-500);}
+.dark-600 { background-color: var(--dark-600);}
+.dark-700 { background-color: var(--dark-700);}
+.dark-800 { background-color: var(--dark-800);}
+.dark-900 { background-color: var(--dark-900);} 
+
 .shadow-sm-light {
 	box-shadow: 0px 0px 3px 0px white;
 }
 
-.text-light {
+.text-light {	color: var(--light);}
+.text-dark {	color: var(--dark);}
+.text-primary {	color: var(--primary);}
+.text-secondary {	color: var(--secondary);}
+.text-accent {	color: var(--accent);}
+
+.price-bubble {
+	left: 5%;
+	top: 5%;
+	border-radius: 9999px;
+	padding: .25rem .5rem;
+}
+
+.item-img-thumb {
+	width: 200px;
+}
+
+button {
+	--border-color: var(--primary);
+	background-image: linear-gradient(
+		15deg,
+		var(--dark-100),
+		var(--secondary-200),
+		var(--light-100)
+	);
+	border-radius: 9999px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: var(--border-color);
+	cursor: pointer;
+}
+
+.btn-primary {
+	background-color: var(--primary-800);
+	--border-color: var(--light);
 	color: var(--light);
 }
+.btn-secondary {
+	background-color: var(--secondary-800);
+	--border-color: var(--accent);
+	color: var(--light);
+}
+.btn-accent { background-color: var(--accent-800);}
+.btn-light { background-color: var(--light-800);}
+.btn-dark { background-color: var(--dark-800);}
+
+.btn-primary:hover { background-color: var(--primary);}
+.btn-secondary:hover { background-color: var(--secondary);}
+.btn-accent:hover { background-color: var(--accent);}
+.btn-light:hover { background-color: var(--light);}
+.btn-dark:hover { background-color: var(--dark);}
