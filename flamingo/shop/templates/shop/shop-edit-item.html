@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block pageTitle %}
+	Shop For Discounted Products
+{% endblock %}
+
+{% block content %}
+	<h1 class="w-100 mb-4">{{ mode }} A Product</h1>
+	<form class='flex-col gap-4' id='add-item-form'>
+		<div class="flex-col">
+			<label for="item-code" class="text-sm bold">Item SKU/Code</label>
+			<div class="flex gap-2 ai-center">
+				<input type="text" name='item-code' id='item-code' />
+				<input type="checkbox" name="item-code-auto" id="item-code-auto">
+				<span class='italic text-xs text-accent'>Auto-Generate</span>
+				<script>
+					const checked = document.getElementById('item-code-auto')
+					checked.onclick = (e) => {
+						const itemCode = document.getElementById('item-code')
+						itemCode.disabled = e.target.checked
+
+					}
+				</script>
+			</div>
+		</div>
+		<div class="flex-col">
+			<label for="item-name" class="text-sm bold">Item Name</label>
+			<input type="text" name='item-name' id='item-name'>
+		</div>
+		<div class="flex-col">
+			<label for="item-name" class="text-sm bold">Description (<span class="italic soft text-xs">500 char remaining</span>)</label>
+			<textarea name="item-desc" id="item-desc" cols="30" rows="10"></textarea>
+		</div>
+		<div class="flex gap-4 ai-center">
+			<label for="item-cost" class="f-1 text-sm bold">Unit Cost</label>
+			<div class="flex">
+				$<input type="text" name='item-cost' id='item-cost' />
+			</div>
+		</div>
+		<div class="flex gap-4 ai-center">
+			<label for="item-cost" class="f-1 text-sm bold">Unit Price</label>
+			<div class="flex">
+				$<input type="text" name='item-price' id='item-price' />
+			</div>
+		</div>
+		<div class="flex">
+			<label for="item-cost" class="f-1 text-sm bold">Stock Quantity</label>
+			<input type="number" name='item-stock' id='item-stock' value='1' />
+		</div>
+		<div class="flex gap-4">
+			<button type='submit' class='btn-secondary py-2 px-4 f-2 bold'>Submit</button>
+			<button type='button' class='btn-accent py-2 px-4 f-1 bold' id='cancel-button'>Cancel</button>
+		</div>
+		<script>
+			document.getElementById('add-item-form').onsubmit = (e) => {
+				e.preventDefault()
+				const formData = new FormData(e.target)
+				const data = {
+					item_code: formData.get('item-code'),
+					item_name: formData.get('item-name'),
+					description: formData.get('item-desc'),
+					cost: formData.get('item-cost'),
+					price: formData.get('item-price'),
+					stock: formData.get('item-stock'),
+				}
+				fetch('http://localhost:8000/api/shop/items/add', {
+					body: JSON.stringify(data),
+					method: 'POST',
+					{% comment %} cors: 'nocors' {% endcomment %}
+				})
+				.then(res => res.json())
+				.then(data => console.log(data))
+				.catch((e) => console.log(e))
+			}
+
+			document.getElementById('cancel-button').onclick = () => window.location.href = '/shop'
+		</script>
+	</form>
+{% endblock %}

@@ -1061,4 +1061,5 @@
 	color: hsl(var(--dark));
 }
 
+.soft { font-weight: 200;}
 .pill { border-radius: 9999px;}
