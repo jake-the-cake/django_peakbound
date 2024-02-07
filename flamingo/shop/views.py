@@ -1,4 +1,5 @@
 from django.shortcuts import render
+
 from datetime import datetime, timedelta
 from django.core.paginator import Paginator
 from shop.models import Item
@@ -52,7 +53,7 @@ def add_item(request):
 
 def item_list(request):
 	items = Item.objects.all()
-	per_page = 4
+	per_page = 20
 	search_by = request.GET.get('searchBy')
 	paginator = Paginator(items, per_page)
 	page_number = request.GET.get('page') or 1
@@ -67,3 +68,8 @@ def item_list(request):
 		'item_count': item_count,
 		'searchBy': capital_all_first_lower_rest(search_by)
 	 })
+
+def view_item(request, id):
+	item = Item.objects.filter(item_code = id)[0]
+	item.item_name = capital_all_first_lower_rest(item.item_name)
+	return render(request, 'shop/shop-view-item.html', { 'item': item })

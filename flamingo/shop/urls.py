@@ -5,5 +5,5 @@ urlpatterns = [
     path('', views.home),
     path('items/', views.item_list),
     path('items/add/', views.add_item),
-    # path('items/edit/', views.edit_item),
+    path('items/<str:id>/', views.view_item),
 ]

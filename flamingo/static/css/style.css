@@ -207,14 +207,18 @@ button {
 .btn-primary {
 	background-color: var(--primary-800);
 	--border-color: var(--light);
-	color: var(--light);
+	color: var(--light-800);
 }
 .btn-secondary {
 	background-color: var(--secondary-800);
 	--border-color: var(--accent);
-	color: var(--light);
+	color: var(--light-800);
 }
-.btn-accent { background-color: var(--accent-800);}
+.btn-accent {
+	background-color: var(--accent-800);
+	--border-color: var(--secondary-800);
+	color: var(--light-800);
+}
 .btn-light { background-color: var(--light-800);}
 .btn-dark { background-color: var(--dark-800);}
 
@@ -223,6 +227,32 @@ button {
 .btn-accent:hover { background-color: var(--accent);}
 .btn-light:hover { background-color: var(--light);}
 .btn-dark:hover { background-color: var(--dark);}
+
+input, textarea {
+	padding: .3rem 1rem;
+	background-color: var(--accent-100);
+	border: 1px solid var(--primary-700);
+	transition: background .2s ease;
+	resize: none;
+}
+
+input:focus, textarea:focus {
+	outline: 2px solid var(--secondary-700);
+	background-color: var(--accent-200);
+}
+
+input:disabled, textarea:disabled {
+	background-color: var(--dark-200);
+	color: var(--dark-700);
+}
+
+input {
+	border-radius: 9999px;
+}
+
+textarea {
+	border-radius: .5rem;
+}
 
 .item-grid {
 	--columns: 4;

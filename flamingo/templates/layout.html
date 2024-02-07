@@ -9,17 +9,17 @@
 	</title>
 	<link rel="stylesheet" href="{% static 'css/quiggle.css' %}">
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
-	<script href="{% static 'js/main.js' %}" defer></script>
 </head>
 <body>
 	{% include 'components/navbar.html' with text=text %}
 	<main>
 		<div class='main-card'>
-				{% block content %}
-					No content.
-				{% endblock %}
+			{% block content %}
+			No content.
+			{% endblock %}
 		</div>
 	</main>
 	<footer>footer</footer>
+	<script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

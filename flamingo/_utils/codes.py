@@ -1,4 +1,5 @@
 import random
+import math
 
 characters = {
 	'num': [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
@@ -19,3 +20,7 @@ def createCharacterCode(length = 16, alpha = 'all', **args):
 		randomNumber = int(random.random() * len(chars))
 		outputString = str(outputString) + str(chars[randomNumber])
 	return outputString
+
+def create_item_code(cost, code):
+	cost = math.ceil(cost)
+	return (str(cost) + code.upper() + createCharacterCode(length= 7 - len(str(cost)), alpha= 'upper')).upper()

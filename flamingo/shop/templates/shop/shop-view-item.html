@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block pageTitle %}
+	{{ item.item_name }}
+{% endblock %}
+
+{% block content %}
+	<div class='flex-col ai-start w-100'>
+		<h1 class="">{{ item.item_name }}</h1>
+		<span class='soft text-sm italic text-secondary'>
+			Item Code: <span class='bold'>{{ item.item_code }}</span>
+			{% if item.sku != item.item_code %}
+				(SKU: {{ item.sku }})
+			{% endif %}
+		</span>
+	</div>
+	<div>{{ item.description }}</div>
+
+{% endblock %}

@@ -11,3 +11,4 @@ class Item(models.Model):
 	price = models.FloatField(default=0)
 	stock = models.IntegerField(default=1)
 	description = models.TextField(default='description', max_length=500)
+	sku = models.CharField(max_length=24)

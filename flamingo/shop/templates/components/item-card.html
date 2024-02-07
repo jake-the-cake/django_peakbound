@@ -8,7 +8,7 @@
 		{% endif %}
 	</div>
 	<div class='flex-col gap-1 m-auto p-2'>
-		<span class="italic text-center text-sm">{{ item.name }}</span>
+		<span class="italic text-center text-sm">{{ item.item_name }}</span>
 		<div class='flex ai-center m-auto gap-1'>
 			<span class='text-center text-accent text-sm bold'>
 				Stock: {{ item.stock }}
@@ -17,6 +17,8 @@
 				<span class="primary text-xs bold text-light px-2 py-1 pill">Just Added</span>
 			{% endif %}
 		</div>
-		<button class='btn-secondary bold m-auto px-3 py-1 shadow-sm'>View Details</button>
+		<a href="/shop/items/{{ item.item_code }}" class="">
+			<button class='btn-secondary bold m-auto px-3 py-1 shadow-sm'>View Details</button>
+		</a>
 	</div>
 </div>
