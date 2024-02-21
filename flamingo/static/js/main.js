@@ -54,3 +54,12 @@ function currencyDisplay(value = '0') {
 	splitValue[1] += '000'
 	return [splitValue[0], Math.ceil(Number(splitValue[1].slice(0, 3)) / 10)].join('.')
 }
+
+function addToCart(id, qty = 0) {
+	fetch('/api/shop/orders/add', {
+		body: JSON.stringify({	id, qty }),
+		method: 'POST',
+		mode: 'no-cors'
+	}).then(res => res.json())
+	.then(data => console.log(data))
+}

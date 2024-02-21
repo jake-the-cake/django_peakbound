@@ -24,10 +24,10 @@ class Promo(models.Model):
 
 class Order(models.Model):
 	order_code = models.CharField(max_length=24)
-	customer = models.ForeignKey(User, on_delete=models.CASCADE)
-	status = models.CharField(max_length=10)
+	# customer = models.ForeignsKey(User, on_delete=models.CASCADE)
+	status = models.CharField(max_length=10, default='cart')
 	total = models.FloatField(default=0)
-	promos = models.ManyToManyField(Promo)
+	# promos = models.ManyToManyField(Promo)
 
 class OrderLine(models.Model):
 	order = models.ForeignKey(Order, on_delete=models.CASCADE)
