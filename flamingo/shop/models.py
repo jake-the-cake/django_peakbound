@@ -22,17 +22,19 @@ class Promo(models.Model):
 	applicable_items = models.ManyToManyField(Item)
 	can_combine = models.BooleanField(default=False)
 
-class Order(models.Model):
-	order_code = models.CharField(max_length=24)
-	# customer = models.ForeignsKey(User, on_delete=models.CASCADE)
-	status = models.CharField(max_length=10, default='cart')
-	total = models.FloatField(default=0)
-	# promos = models.ManyToManyField(Promo)
-
 class OrderLine(models.Model):
-	order = models.ForeignKey(Order, on_delete=models.CASCADE)
+	order_code = models.CharField(max_length=24, default='code')
 	item = models.ForeignKey(Item, on_delete=models.CASCADE)
 	quantity = models.IntegerField(default=1)
 	price = models.FloatField(default=0)
 	promo_price = models.FloatField(default=0)
-	promo_code = models.CharField(max_length=12)
+	promo_code = models.CharField(max_length=12, default='xxxxxxxx')
+
+class Order(models.Model):
+	order_code = models.CharField(max_length=24)
+	customer = models.CharField(max_length=24, default='Customer A')
+	# customer = models.ForeignsKey(User, on_delete=models.CASCADE)
+	status = models.CharField(max_length=10, default='cart')
+	total = models.FloatField(default=0)
+	promos = models.ManyToManyField(Promo, default=None, blank=True)
+	lines = models.ManyToManyField(OrderLine, default=None, blank=True)

@@ -5,29 +5,38 @@ from django.core import serializers
 import json
 from _utils.codes import create_item_code
 
-# @api_view(['GET'])
-# def get_orders(request):
-# 	item = Item.objects.get()
-# 	return Response(serializers.serialize('json', [item]))
+@api_view(['GET'])
+def get_orders(request):
+	orders = Order.objects.get()
+	return Response(serializers.serialize('json', [orders]))
 
 @api_view(['POST'])
 def add_order(request):
 	body = json.loads(request.body.decode('utf-8'))
 	# itemCode = create_item_code(1.2, 'a')
-	order_code = 'codetobemade'
-	order = Order(
-		order_code = order_code,
-		status = 'cart',
-		total = 0
-	)
-	order.save()
+	order = Order.objects.filter(customer='Customer A', status='cart') or None
+	if len(order) > 1: order = order[0]
+	if not order:
+		order_code = 'codetobemade'
+		order = Order(
+			order_code = order_code,
+			status = 'cart',
+			total = 0,
+			# promos = Order.promos.set()
+		)
+		order.save()
 	print(order)
+	item = Item.objects.get(id=body['id'])
 	line = OrderLine(
 		order = Order.objects.get(id=order.id),
-		item = Item.objects.get(id=body['id'])
+		item = item,
+		# item = Item.objects.get(id=body['id']),
+		quantity = body['qty'],
 	)
+	line.save()
+	order.lines.add(line)
+	order.save()
 	print(line.item)
-	# order.save()
 	return Response(serializers.serialize('json', [order]))
 
 # @api_view(['POST'])
