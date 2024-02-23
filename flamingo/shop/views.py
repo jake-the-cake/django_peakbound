@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from datetime import datetime, timedelta
 from django.core.paginator import Paginator
-from shop.models import Item
+from shop.models import Item, Order
 
 #
 #
@@ -73,3 +73,8 @@ def view_item(request, id):
 	item = Item.objects.filter(item_code = id)[0]
 	item.item_name = capital_all_first_lower_rest(item.item_name)
 	return render(request, 'shop/shop-view-item.html', { 'item': item })
+
+def view_cart(request):
+	order = Order.objects.filter(customer='Customer A')[0]
+	lines = order.lines.all()
+	return render(request, 'shop/shop-view-cart.html', { 'order': order, 'lines': lines })

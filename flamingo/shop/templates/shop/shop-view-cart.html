@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block pageTitle %}
+	{{ order.total }}
+{% endblock %}
+
+{% block content %}
+	<div class='flex-col ai-start w-100'>
+		<h1 class="">Shopping Cart</h1>
+		<span class='soft text-sm italic text-secondary'>
+			Order Number: <span class='bold'>{{ order.order_code }}</span>
+		</span>
+	</div>
+	<div class="flex-col">
+		{% if lines|length < 1 %}
+			<p>Cart Is Empty.</p>
+		{% else %}
+			{% for line in lines %}
+				<div class="flex">
+					{{ line.item.item_code }}, {{ line.item.item_name }}
+				</div>
+			{% endfor %}
+		{% endif %}
+	</div>
+	<!-- <div>{{ order.lines }}</div> -->
+{% endblock %}

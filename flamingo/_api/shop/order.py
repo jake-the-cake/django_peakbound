@@ -22,7 +22,6 @@ def add_order(request):
 			order_code = order_code,
 			status = 'cart',
 			total = 0,
-			# promos = Order.promos.set()
 		)
 		order.save()
 	print(order)
@@ -30,7 +29,6 @@ def add_order(request):
 	line = OrderLine(
 		order = Order.objects.get(id=order.id),
 		item = item,
-		# item = Item.objects.get(id=body['id']),
 		quantity = body['qty'],
 	)
 	line.save()
