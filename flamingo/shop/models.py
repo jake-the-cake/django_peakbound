@@ -1,12 +1,12 @@
 from django.db import models
-from datetime import datetime
+from django.utils import timezone
 from visitor.models import User
 
 # Create your models here.
 class Item(models.Model):
 	item_code = models.CharField(max_length=24)
 	item_name = models.CharField(max_length=100)
-	created_on = models.DateTimeField(default = datetime.now())
+	created_on = models.DateTimeField(default = timezone.now())
 	created_by = models.CharField(max_length=100, default='Jason')
 	cost = models.FloatField(default=0)
 	price = models.FloatField(default=0)
