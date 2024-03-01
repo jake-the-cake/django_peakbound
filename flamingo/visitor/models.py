@@ -1,5 +1,5 @@
 from django.db import models
-from _utils.codes import createCharacterCode
+from _utils.codes import create_char_code
 
 ###
 '''
@@ -10,7 +10,7 @@ from _utils.codes import createCharacterCode
 class Session(models.Model):
 	session_key = models.CharField(
 		max_length = 50,
-		default = createCharacterCode( length = 36 ),
+		default = create_char_code( length = 36 ),
 	)
 	ip = models.CharField(
 		max_length = 15,
@@ -28,7 +28,7 @@ class Session(models.Model):
 class Visitor(models.Model):
 	visitorCode = models.CharField(
 		max_length = 16,
-		default = createCharacterCode(),
+		default = create_char_code(),
 		unique = True
 	)
 	sessions = models.ManyToManyField( Session	)
@@ -63,7 +63,7 @@ class User(models.Model):
 class Customer(models.Model):
 	customerCode = models.CharField(
 		max_length = 16,
-		default = createCharacterCode(),
+		default = create_char_code(),
 		unique = True,
 	)
 	visitorAccounts = models.ManyToManyField( Visitor )

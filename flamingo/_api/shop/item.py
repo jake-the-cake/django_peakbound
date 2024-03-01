@@ -13,7 +13,7 @@ def get_items(request):
 @api_view(['POST'])
 def add_item(request):
 	body = json.loads(request.body.decode('utf-8'))
-	itemCode = create_item_code(1.2, 'all')
+	itemCode = create_item_code(body['cost'] or 0, body['description'][0].upper())
 	item = Item(
 		item_code = itemCode,
 		sku = body['sku'] or itemCode,
