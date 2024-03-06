@@ -7,20 +7,7 @@ from _config.objects import characters
 from .strings import reverse_str
 
 def check_item_code(model, code, query):
-	# print(kwargs)
-	if model and code:
-		# kv = None
-		# for k,v in kwargs:
-		# 	if not kv:
-		# 		kv = {
-		# 			'key': k,
-		# 			'value': v
-		# 		}
-
-		if len(model.objects.filter(query)) < 1:
-			return False
-		else:
-			return True
+	if model and code and len(model.objects.filter(**query)) > 0:	return True
 	return False
 
 def create_item_code(cost = 0, code = departments.Art, model = None):
@@ -36,6 +23,12 @@ def create_char_code(length = config['code_length'], alpha = 'all'):
 	output: string = ''
 	chars: [] = [] + characters['num']
 	if alpha != 'num':
+		if alpha == 'upper-only':
+			chars = [x.upper() for x in characters['alpha']]
+		if alpha == 'lower-only':
+			chars = characters['alpha']
+		if alpha == 'letters':
+			chars = characters['alpha'] + [x.upper() for x in characters['alpha']]
 		if alpha == 'upper':
 			chars += [x.upper() for x in characters['alpha']]
 		elif alpha == 'lower':
