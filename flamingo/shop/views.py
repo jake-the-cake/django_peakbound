@@ -75,6 +75,11 @@ def view_item(request, id):
 	return render(request, 'shop/shop-view-item.html', { 'item': item })
 
 def view_cart(request):
-	order = Order.objects.filter(customer='Customer A')[0]
-	lines = order.lines.all()
-	return render(request, 'shop/shop-view-cart.html', { 'order': order, 'lines': lines })
+	data = {}
+	order = Order.objects.filter(customer='Customer A')
+	if order: 
+		# order = order[len(order) - 1]
+		# lines = order.lines.all()
+		data['order'] = order[len(order) - 1]
+		data['lines'] = data['order'].lines.all()
+	return render(request, 'shop/shop-view-cart.html', data)

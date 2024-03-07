@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view
 from shop.models import Order, OrderLine, Item
 from django.core import serializers
 import json
-from _utils.codes import create_item_code
+from _utils.codes import create_item_code, create_char_code
 
 @api_view(['GET'])
 def get_orders(request):
@@ -14,10 +14,10 @@ def get_orders(request):
 def add_order(request):
 	body = json.loads(request.body.decode('utf-8'))
 	# itemCode = create_item_code(1.2, 'a')
-	order = Order.objects.filter(customer='Customer A', status='cart') or None
-	if len(order) > 1: order = order[0]
+	order = Order.objects.filter(customer='Customer b', status='cart') or None
+	if order and len(order) > 1: order = order[0]
 	if not order:
-		order_code = 'codetobemade'
+		order_code = create_char_code(12, 'lower-only')
 		order = Order(
 			order_code = order_code,
 			status = 'cart',

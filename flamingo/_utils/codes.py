@@ -24,12 +24,12 @@ def create_char_code(length = config['code_length'], alpha = 'all'):
 	chars: [] = [] + characters['num']
 	if alpha != 'num':
 		if alpha == 'upper-only':
-			chars = [x.upper() for x in characters['alpha']]
-		if alpha == 'lower-only':
-			chars = characters['alpha']
-		if alpha == 'letters':
-			chars = characters['alpha'] + [x.upper() for x in characters['alpha']]
-		if alpha == 'upper':
+			chars = [] + [x.upper() for x in characters['alpha']]
+		elif alpha == 'lower-only':
+			chars = [] + characters['alpha']
+		elif alpha == 'letters':
+			chars = [] + characters['alpha'] + [x.upper() for x in characters['alpha']]
+		elif alpha == 'upper':
 			chars += [x.upper() for x in characters['alpha']]
 		elif alpha == 'lower':
 			chars += characters['alpha']
