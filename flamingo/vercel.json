@@ -1,0 +1,14 @@
+{
+  "builds": [{   
+    "src": "flamingo/wsgi.py",
+    "use": "@vercel/python",
+    "config": {
+      "maxLamdaSize": "15mb",
+      "runtime": "python3.12"
+    }
+  }],
+  "routes": [{
+    "src": "/(.*)",
+    "dest": "flamingo/wsgi.py"
+  }]
+}
