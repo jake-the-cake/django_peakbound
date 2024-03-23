@@ -1,26 +1,41 @@
 import random
 import math
 
-characters = {
-	'num': [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
-	'alpha': ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-					 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-}
+from _config.config import config
+from _config.departments import departments
+from _config.objects import characters
+from .strings import reverse_str
 
-def createCharacterCode(length = 16, alpha = 'all', **args):
-	outputString = ''
-	chars = characters['num']
-	if alpha == 'all':
-		chars += characters['alpha'] + [x.upper() for x in characters['alpha']]
-	elif alpha == 'upper':
-		chars += [x.upper() for x in characters['alpha']]
-	elif alpha == 'lower':
-		chars += characters['alpha']
+def check_item_code(model, code, query):
+	if model and code and len(model.objects.filter(**query)) > 0:	return True
+	return False
+
+def create_item_code(cost = 0, code = departments.Art, model = None):
+	str_cost = reverse_str(str(math.ceil(cost)))
+	char_code = create_char_code(config['item_code_length'] - len(code) - len(str_cost), 'upper')
+	item_code = str_cost + code + char_code
+	if model and check_item_code(model, item_code, {'item_code': item_code}):
+		return create_item_code(cost, code, model)
+	else:
+		return item_code
+
+def create_char_code(length = config['code_length'], alpha = 'all'):
+	output: string = ''
+	chars: [] = [] + characters['num']
+	if alpha != 'num':
+		if alpha == 'upper-only':
+			chars = [] + [x.upper() for x in characters['alpha']]
+		elif alpha == 'lower-only':
+			chars = [] + characters['alpha']
+		elif alpha == 'letters':
+			chars = [] + characters['alpha'] + [x.upper() for x in characters['alpha']]
+		elif alpha == 'upper':
+			chars += [x.upper() for x in characters['alpha']]
+		elif alpha == 'lower':
+			chars += characters['alpha']
+		else:
+			chars += characters['alpha'] + [x.upper() for x in characters['alpha']]
 	for x in [''] * length:
 		randomNumber = int(random.random() * len(chars))
-		outputString = str(outputString) + str(chars[randomNumber])
-	return outputString
-
-def create_item_code(cost, code):
-	cost = math.ceil(cost)
-	return (str(cost) + code.upper() + createCharacterCode(length= 7 - len(str(cost)), alpha= 'upper')).upper()
+		output = str(output) + str(chars[randomNumber])
+	return output

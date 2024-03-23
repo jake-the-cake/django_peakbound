@@ -1,5 +1,5 @@
 from django.db import models
-from _utils.codes import createCharacterCode
+from _utils.codes import create_char_code
 
 ###
 '''
@@ -10,7 +10,7 @@ from _utils.codes import createCharacterCode
 class Session(models.Model):
 	session_key = models.CharField(
 		max_length = 50,
-		default = createCharacterCode( length = 36 ),
+		default = create_char_code( length = 36 ),
 	)
 	ip = models.CharField(
 		max_length = 15,
@@ -28,7 +28,7 @@ class Session(models.Model):
 class Visitor(models.Model):
 	visitorCode = models.CharField(
 		max_length = 16,
-		default = createCharacterCode(),
+		default = create_char_code(),
 		unique = True
 	)
 	sessions = models.ManyToManyField( Session	)
@@ -44,16 +44,6 @@ class Visitor(models.Model):
 
 ###
 '''
-	USER MODEL:
-	A user profile is generated whenever a transaction occurs
-'''
-class User(models.Model):
-
-	def __str__(self):
-		return self.customerAccount.customerCode
-
-###
-'''
 	CUSTOMER MODEL:
 	When a transaction occurs with no user logged in, the information collected
 	during the transaction will be used to create a customer account (tied to their
@@ -61,16 +51,28 @@ class User(models.Model):
 	contains more information.
 '''
 class Customer(models.Model):
-	customerCode = models.CharField(
+	customer_code = models.CharField(
 		max_length = 16,
-		default = createCharacterCode(),
+		default = create_char_code(length = 16),
 		unique = True,
 	)
-	visitorAccounts = models.ManyToManyField( Visitor )
+	name = models.CharField( max_length = 100, default = 'name' )
 	email = models.EmailField()
+	visitor_ids = models.ManyToManyField( Visitor, null = True, default=None )
 	created = models.DateTimeField( auto_now_add = True )
-	userProfile = models.ForeignKey(
-		User,
-		on_delete = models.PROTECT,
-		null = False
-	)
+
+###
+'''
+	USER MODEL:
+	A user profile is generated whenever a transaction occurs
+'''
+class User(models.Model):
+	customer = models.ForeignKey(Customer, on_delete = models.CASCADE, default='')
+	is_active = models.BooleanField(default = False)
+	password = models.CharField(max_length = 100, default = 'password')
+	last_login = models.DateTimeField( default = None )
+	
+	def __str__(self):
+		return self.customer.name
+
+###

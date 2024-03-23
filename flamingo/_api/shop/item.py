@@ -4,6 +4,7 @@ from shop.models import Item
 from django.core import serializers
 import json
 from _utils.codes import create_item_code
+from _config.departments import departments
 
 @api_view(['GET'])
 def get_items(request):
@@ -13,7 +14,7 @@ def get_items(request):
 @api_view(['POST'])
 def add_item(request):
 	body = json.loads(request.body.decode('utf-8'))
-	itemCode = create_item_code(1.2, 'a')
+	itemCode = create_item_code(body['cost'] or 0, departments.Art, Item)
 	item = Item(
 		item_code = itemCode,
 		sku = body['sku'] or itemCode,

@@ -16,5 +16,13 @@
 		</span>
 	</div>
 	<div>{{ item.description }}</div>
+	<button id='add-to-cart-button' class="px-4 py-2 btn-accent bold" value="{{ item.id }}">Add To Cart</button>
+	<script>
+		const addToCartButton = document.getElementById('add-to-cart-button')
+		addToCartButton.onclick = (e) => {
+			e.preventDefault()
+			addToCart(e.target.value , 1)
+		}
+	</script>
 
 {% endblock %}
