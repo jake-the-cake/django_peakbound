@@ -22,6 +22,7 @@ INSTALLED_APPS = [
 		
     'visitor',       
     'shop',       
+    'service',       
 	'article',
 	
     'rest_framework'
@@ -52,8 +53,8 @@ TEMPLATES = [
         },
     },
 ]
-# WSGI_APPLICATION = 'flamingo.wsgi.application'
-WSGI_APPLICATION = 'vercel_app.wsgi.app'
+WSGI_APPLICATION = 'flamingo.wsgi.application'
+# WSGI_APPLICATION = 'vercel_app.wsgi.app'
 
 # Database
 DATABASES = {
