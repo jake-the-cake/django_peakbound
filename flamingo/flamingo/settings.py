@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-3+chlcz6+w#0m_n03$e=*3dh7mv=ash1xt6u2d+8m7k**9^n97
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = [ '.vercel.app', 'localhost', '127.0.0.1' ]
+ALLOWED_HOSTS = [ 'peakbound.pythonanywhere.com', 'localhost', '127.0.0.1' ]
 
 # Application definition
 INSTALLED_APPS = [
@@ -54,7 +54,6 @@ TEMPLATES = [
     },
 ]
 WSGI_APPLICATION = 'flamingo.wsgi.application'
-# WSGI_APPLICATION = 'vercel_app.wsgi.app'
 
 # Database
 DATABASES = {
@@ -91,7 +90,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
 	os.path.join(BASE_DIR, 'static')
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
