@@ -6,17 +6,18 @@ Explore It All
 {% endblock%}
 
 {% block content %}
-<div class="light-700 py-6 px-auto">
-	<h1 class='w-100 text-center'>Explore The Beautiful World Around You</h1>
-	<p class='text-secondary italic text-center text-sm mb-6'>
-		You have arrived at your haven for an elevated lifestyle. Immerse yourself in a world that unites well-being, community, and sustainable living. Join us on this venture, where each stride leads to a life of fulfillment and celebration.
+<div class="light-700 py-6 px-auto flex-col w-100 gap-4">
+	<h1 class='w-75 max-w-900px text-center m-auto text-accent'>Discover Nature's Wonders with Us</h1>
+	<p class='w-75 max-w-900px m-auto lh-15 ls-10 text-primary italic text-center text-md'>
+		<span class='bold'>Adventure awaits!</span> Whether you're a seasoned explorer or new to outdoor escapades, we're here to accompany you on thrilling journeys into the heart of nature. Our mission is simple: to <span class='text-accent bold'>inspire and connect</span> through the wonders of the great outdoors. Join us as we embark on unforgettable adventures and create lasting memories together!
 	</p>
+	<button class="btn-accent px-10 py-4 text-xl m-auto bold">Explore Our Adventures</button>
 </div>
-	<div class="flex-col gap-4">
+	<!-- <div class="flex-col gap-4">
 		<div class="flex b-sm m-auto">
 			<div class='p-2 f-1 primary'>Desription</div>
 			<div class='p-2 f-1 secondary'>Image</div>
 		</div>
-	</div>
+	</div> -->
 	{% comment %} <img src="{% static 'img/pbj.png' %}" alt="Logo" /> {% endcomment %}
 {% endblock %}
