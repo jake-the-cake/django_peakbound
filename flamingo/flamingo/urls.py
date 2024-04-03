@@ -19,4 +19,4 @@ urlpatterns = [
 		path('api/', include(apiUrls)),
 ]
 
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+# urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
