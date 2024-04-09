@@ -11,13 +11,13 @@
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-	{% include 'components/navbar.html' with logo=logo %}
+	{% include 'components/navbar.html' with site=site %}
 	<main>
 		{% block content %}
 			No content.
 		{% endblock %}
 	</main>
-	<footer>footer</footer>
+		{% include 'components/footer.html' with site=site %}
 	<script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
