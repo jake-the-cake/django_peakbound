@@ -289,6 +289,39 @@ textarea {
 	transform: rotate(180deg);
 }
 
+.link-list-horizontal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	list-style: none;
+}
+
+.link-list-horizontal li {
+	text-align: center;
+}
+
+.link-list-horizontal li a {
+	text-decoration: none;
+}
+
+a {
+	--link_color: var(--accent);
+	text-decoration: none;
+	color: var(--link_color);
+	background-color: transparent !important;
+	transition: .3s color linear;
+}
+
+a.primary {
+	--link_color: var(--primary);
+}
+a.primary:hover {
+	--link_color: var(--light);
+}
+a.hover-accent:hover {
+	--link_color: var(--accent);
+}
+
 @media only screen and (max-width: 1050px) {.item-grid{ --columns: 3;}}
 @media only screen and (max-width: 800px) {.item-grid{ --columns: 2;}}
 @media only screen and (max-width: 550px) {.item-grid{ --columns: 1;}}

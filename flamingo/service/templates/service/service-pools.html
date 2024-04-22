@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block pageTitle %}
+PBJ Service Co
+{% endblock %}
+
+{% block content %}
+	<h1 class="w-100 mb-6">Our Services</h1>
+	<section id="new-arrivals" class='white b-sm py-2 px-4 shadow-sm flex-col'>
+		<h2 class="text-accent text-center underline">Pool Maintenance</h2>
+		<p class="secondary-700 text-primary bold mx-10 my-6 p-8 b-sm br-2 shadow-sm">Expert service guaranteed to keep your summer fun a hassle free experience.</p>
+		<ul class="flex-col gap-4 m-auto mb-4">
+			<li class="mx-5">
+				Opening & Closing
+				<br />
+				<span class="italic text-sm text-primary">Openings from only $35!</span>
+			</li>
+			<li class="mx-5">Weekly Maintenance</li>
+			<li class="mx-5">Filter Repair</li>
+		</ul>
+		<button class="bold text-xl btn-secondary px-5 py-2 m-auto">Contact Us</button>
+		<p class="m-auto text-sm text-accent mt-4 bold italic">We will happily get back to you as soon as possible.</p>
+	</section>
+{% endblock %}
