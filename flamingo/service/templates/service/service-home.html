@@ -7,23 +7,7 @@ PBJ Service Co
 
 {% block content %}
   <div class="flex-col ai-center gap-6">
-    <ul class="link-list-horizontal gap-4 text-sm bold">
-      <li>
-        <a href="/service/hauling" class="primary hover-accent">Delivery & Moving</a>
-      </li>
-      <li>
-        <a href="/service/assembly" class="primary hover-accent">Furniture Assembly</a>
-      </li>
-      <li>
-        <a href="/service/pools" class="primary hover-accent">Pool Maintenance</a>
-      </li>
-      <li>
-        <a href="/service/cleanup" class="primary hover-accent">Yard & Gutter Cleanup</a>
-      </li>
-      <li>
-        <a href="/service/etc" class="primary hover-accent">You Name It</a>
-      </li>
-    </ul>
+    {% include 'components/horizontal-links.html' %}
     <div class="px-6 py-2 w-100 secondary-700 b-sm pill flex jc-between ai-center">
       <span class="text-md flex ai-center text-primary">Call Us @<span class="bold text-light ts-dark-2 text-lg ms-1">732-443-0550</span></span>
       <span class="bold text-primary text-md">Ocean & Monmouth County</span>

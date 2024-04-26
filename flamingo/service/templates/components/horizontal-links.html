@@ -1,0 +1,29 @@
+<ul class="link-list-horizontal text-sm bold jc-center">
+  <li>
+    <a href="/service/hauling" class="primary hover-accent">Delivery & Moving</a>
+  </li>
+  <li>
+    <a href="/service/assembly" class="primary hover-accent">Furniture Assembly</a>
+  </li>
+  <li>
+    <a href="/service/pools" class="primary hover-accent">Pool Maintenance</a>
+  </li>
+  <li>
+    <a href="/service/cleanup" class="primary hover-accent">Yard & Gutter Cleanup</a>
+  </li>
+  <li>
+    <a href="/service/etc" class="primary hover-accent">You Name It</a>
+  </li>
+</ul>
+<script>
+  const lists = document.getElementsByClassName('link-list-horizontal')
+  if (lists) {
+    console.log(lists)
+    Array.from(Object.values(lists)).forEach((list, listIndex) => {
+      console.log(list)
+      link = list.firstElementChild.firstElementChild
+      console.log(link)
+      // if (link) item.parentNode.style.display = 'none'
+    })
+  }
+</script>
