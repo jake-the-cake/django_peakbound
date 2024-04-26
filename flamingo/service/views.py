@@ -1,5 +1,19 @@
 from django.shortcuts import render
 
-# Create your views here.
 def home(request):
 	return render(request, 'service/service-home.html', {})
+
+def hauling(req):
+	return render(req, 'service/service-pools.html', {})
+
+def assembly(req):
+	return render(req, 'service/service-pools.html', {})
+
+def pools(req):
+	return render(req, 'service/service-pools.html', {})
+
+def cleanup(req):
+	return render(req, 'service/service-pools.html', {})
+
+def etc(req):
+	return render(req, 'service/service-pools.html', {})
