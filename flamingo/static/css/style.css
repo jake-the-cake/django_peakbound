@@ -188,7 +188,7 @@ footer {
 	width: 200px;
 }
 
-button {
+button, .btn {
 	--border-color: var(--primary);
 	background-image: linear-gradient(
 		15deg,
@@ -328,4 +328,20 @@ a.hover-accent:hover {
 
 .b-accent {
 	border-color: var(--accent);
+}
+
+.form-header {
+	padding: .5rem 1.25rem;
+	border-width: 2px;
+	width: fit-content;
+	transition: width .2s linear;
+	border-radius: .5rem !important;
+}
+
+.form-header.form-header-exp {
+	width: 100%;
+}
+
+.trans-h {
+	transition: height .2s linear;
 }

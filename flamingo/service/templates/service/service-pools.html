@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block pageTitle %}
-PBJ Service Co
+PBJ Pool Service
 {% endblock %}
 
 {% block content %}
@@ -20,15 +20,31 @@ PBJ Service Co
 	</ul>
 	<!-- contact form -->
 	<div class="flex-col ai-center gap-1">
-		<div id="contact-form" class="bold text-xl secondary px-5 py-2 m-auto pill pointer b-md b-accent text-light ts-dark-2">
-			Contact Us
+		<div id="contact-btn" class="form-header btn-secondary btn b-accent">
+			<span class="bold text-xl text-light ts-dark-2">
+				Contact Us
+			</span>
+
 		</div>
-		<form action="">
+		<form class="h-0 of-hidden trans-h" action="">
 			Form
+			<input type="text">
 		</form>
 		<p class="m-auto text-sm text-accent mt-4 bold italic">
 			We will happily get back to you as soon as possible.
 		</p>
 	</div>
 </section>
+<script>
+	const btn = document.getElementById('contact-btn')
+	if (btn) {
+		btn.onclick = (e) => {
+			btn.classList.toggle('form-header-exp')
+			const form = btn.parentNode.querySelector('form')
+			if (form) {
+				form.classList.toggle('h-0')
+			}
+		}
+	}
+</script>
 {% endblock %}
