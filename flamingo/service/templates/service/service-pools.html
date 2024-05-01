@@ -20,11 +20,11 @@ PBJ Pool Service
 	</ul>
 	<!-- contact form -->
 	<div class="flex-col ai-center gap-1">
-		<div id="contact-btn" class="form-header btn-secondary btn b-accent">
+		<div id="contact-btn" class="form-header btn-secondary btn flex jc-between ai-end">
 			<span class="bold text-xl text-light ts-dark-2">
 				Contact Us
 			</span>
-
+			<!-- <span id='contact-close'>Close</span> -->
 		</div>
 		<form class="h-0 of-hidden trans-h" action="">
 			Form
@@ -36,8 +36,16 @@ PBJ Pool Service
 	</div>
 </section>
 <script>
+	// GET BUTTON
 	const btn = document.getElementById('contact-btn')
 	if (btn) {
+		// HIDE CLOSE LINK
+		const close = btn.querySelector('contact-close') || document.createElement('span')
+		if (!close.innerText) {
+			close.innerText = 'Closed'
+			btn.appendChild(close)
+		}
+		close.classList.toggle('d-none')
 		btn.onclick = (e) => {
 			btn.classList.toggle('form-header-exp')
 			const form = btn.parentNode.querySelector('form')

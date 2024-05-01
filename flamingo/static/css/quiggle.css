@@ -4,6 +4,7 @@
 .inline-flex{ display: inline-flex;}
 .inline-block{ display: inline-block;}
 .inline-flex-col{ display: inline-flex; flex-direction: column;}
+.d-none { display: none;}
 
 .flex-col {
 	display: flex;
