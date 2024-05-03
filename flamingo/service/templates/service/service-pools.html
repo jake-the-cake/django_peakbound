@@ -24,11 +24,36 @@ PBJ Pool Service
 			<span class="bold text-xl text-light ts-dark-2">
 				Contact Us
 			</span>
-			<!-- <span id='contact-close'>Close</span> -->
+			<span id='contact-close'>Close</span>
 		</div>
-		<form class="h-0 of-hidden trans-h" action="">
-			Form
-			<input type="text">
+		<form class="h-0 of-hidden trans-h flex-col gap-3">
+			<div class="flex-col mt-2">
+				<label class="text-sm bold text-primary" for="form-name">Your Name</label>
+				<input type="text" id="form-name" name="name">
+			</div>
+			<div class="flex-col">
+				<label class="text-sm bold text-primary" for="form-phone">Phone Number</label>
+				<input type="text" name="phone" id="form-phone">
+			</div>
+			<div class="flex-col">
+				<label class="text-sm bold text-primary" for="form-email">Email Address</label>
+				<input type="text" name="email" id="form-email">
+			</div>
+			<div class="flex-col">
+				<label class="text-sm bold text-primary" for="form-service">Service Type</label>
+				<select id="form-service" name="service" class="p-2 bold b-sm pill">
+					<option>Pool Maintenance & Repair</option>
+					<option>Furniture Assembly</option>
+					<option>Delivery & Removal</option>
+					<option>Yard & Gutter Cleanup</option>
+					<option>Other</option>
+				</select>
+			</div>
+			<div class="flex-col">
+				<label class="text-sm bold text-primary" for="form-message">Questions and comments</label>
+				<textarea name="message" id="form-message" cols="30" rows="10"></textarea>
+			</div>
+			<button class="btn-accent text-xl m-auto px-6 px-2" type="submit">Send</button>
 		</form>
 		<p class="m-auto text-sm text-accent mt-4 bold italic">
 			We will happily get back to you as soon as possible.
@@ -40,17 +65,24 @@ PBJ Pool Service
 	const btn = document.getElementById('contact-btn')
 	if (btn) {
 		// HIDE CLOSE LINK
-		const close = btn.querySelector('contact-close') || document.createElement('span')
+		const close = btn.querySelector('#contact-close') || document.createElement('span')
 		if (!close.innerText) {
-			close.innerText = 'Closed'
+			close.innerText = 'Close'
+			close.id = 'contact-close'
 			btn.appendChild(close)
 		}
 		close.classList.toggle('d-none')
 		btn.onclick = (e) => {
+			close.classList.toggle('d-none')
 			btn.classList.toggle('form-header-exp')
 			const form = btn.parentNode.querySelector('form')
 			if (form) {
 				form.classList.toggle('h-0')
+				form.onsubmit = (e) => {
+					e.preventDefault()
+					const data = new FormData(e.target)
+					console.log(data)
+				}
 			}
 		}
 	}
