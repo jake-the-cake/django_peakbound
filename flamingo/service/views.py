@@ -7,7 +7,7 @@ def hauling(req):
 	return render(req, 'service/service-pools.html', {})
 
 def assembly(req):
-	return render(req, 'service/service-pools.html', {})
+	return render(req, 'service/service-assembly.html', {})
 
 def pools(req):
 	return render(req, 'service/service-pools.html', {})

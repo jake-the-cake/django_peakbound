@@ -29,8 +29,20 @@ PBJ Service Co
         <li class="mx-5">Weekly Maintenance</li>
         <li class="mx-5">Filter Repair</li>
       </ul>
-      <button class="bold text-xl btn-secondary px-5 py-2 m-auto">Contact Us</button>
-      <p class="m-auto text-sm text-accent mt-4 bold italic">We will happily get back to you as soon as possible.</p>
+      {% include 'components/contact-form.html' %}
+      {% include 'components/contact-form.html' %}
+      <script>
+        useExpandingContactForm({
+          // formId: [],
+          serviceValue: [
+            'pools',
+            'assembly',
+            'hauling',
+            'cleanup',
+            'etc'
+          ]
+        })
+      </script>
     </section>
   </div>
 {% endblock %}

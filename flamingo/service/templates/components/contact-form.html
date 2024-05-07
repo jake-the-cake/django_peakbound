@@ -1,0 +1,41 @@
+<!-- contact form -->
+	<div class="flex-col ai-center gap-1">
+		<div id="contact-btn" class="form-header btn-secondary btn flex jc-between ai-end">
+			<span class="bold text-xl text-light ts-dark-2">
+				Contact Us
+			</span>
+			<span id='contact-close'>Close</span>
+		</div>
+		<form class="h-0 of-hidden trans-h flex-col gap-3">
+			<div class="flex-col mt-2">
+				<label class="text-sm bold text-primary" for="form-name">Your Name</label>
+				<input type="text" id="form-name" name="name">
+			</div>
+			<div class="flex-col">
+				<label class="text-sm bold text-primary" for="form-phone">Phone Number</label>
+				<input type="text" name="phone" id="form-phone">
+			</div>
+			<div class="flex-col">
+				<label class="text-sm bold text-primary" for="form-email">Email Address</label>
+				<input type="text" name="email" id="form-email">
+			</div>
+			<div class="flex-col">
+				<label class="text-sm bold text-primary" for="form-service">Service Type</label>
+				<select id="form-service" name="service" class="p-2 bold b-sm pill">
+					<option value="pools">Pool Maintenance & Repair</option>
+					<option value="assembly">Furniture Assembly</option>
+					<option value="hauling">Delivery & Removal</option>
+					<option value="cleanup">Yard & Gutter Cleanup</option>
+					<option value="etc">Other</option>
+				</select>
+			</div>
+			<div class="flex-col">
+				<label class="text-sm bold text-primary" for="form-message">Questions and comments</label>
+				<textarea name="message" id="form-message" cols="30" rows="10"></textarea>
+			</div>
+			<button class="btn-accent text-xl m-auto px-6 px-2" type="submit">Send</button>
+      <p class="m-auto text-sm text-accent bold italic">
+        We will happily get back to you as soon as possible.
+      </p>
+		</form>
+	</div>
