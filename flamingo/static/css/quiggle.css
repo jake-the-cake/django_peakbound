@@ -4,7 +4,7 @@
 .inline-flex{ display: inline-flex;}
 .inline-block{ display: inline-block;}
 .inline-flex-col{ display: inline-flex; flex-direction: column;}
-.d-none { display: none;}
+.d-none { display: none !important;}
 
 .flex-col {
 	display: flex;

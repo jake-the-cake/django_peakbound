@@ -1,19 +1,30 @@
 from django.shortcuts import render
+from _data.services import pages
 
 def home(request):
 	return render(request, 'service/service-home.html', {})
 
 def hauling(req):
-	return render(req, 'service/service-pools.html', {})
+	return render(req, 'service/service-details.html', {
+		'details': pages['hauling']
+	})
 
 def assembly(req):
-	return render(req, 'service/service-assembly.html', {})
+	return render(req, 'service/service-details.html', {
+		'details': pages['assembly']
+	})
 
 def pools(req):
-	return render(req, 'service/service-pools.html', {})
+	return render(req, 'service/service-details.html', {
+		'details': pages['pools']
+	})
 
 def cleanup(req):
-	return render(req, 'service/service-pools.html', {})
+	return render(req, 'service/service-details.html', {
+		'details': pages['cleanup']
+	})
 
 def etc(req):
-	return render(req, 'service/service-pools.html', {})
+	return render(req, 'service/service-details.html', {
+		'details': pages['etc']
+	})

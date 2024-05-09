@@ -228,7 +228,7 @@ button, .btn {
 .btn-light:hover { background-color: var(--light);}
 .btn-dark:hover { background-color: var(--dark);}
 
-input, textarea {
+input, textarea, select {
 	padding: .3rem 1rem;
 	background-color: var(--accent-100);
 	border: 1px solid var(--primary-700);
@@ -344,4 +344,17 @@ a.hover-accent:hover {
 
 .trans-h {
 	transition: height .2s linear;
+}
+
+.accent-bubble-sm {
+	width: 1rem;
+	height: 1rem;
+	display: grid;
+	place-content: center;
+	background-color: var(--accent);
+	border: 1px solid var(--primary);
+	border-radius: 50%;
+	padding: 2px;
+	font-size: .8rem;
+	overflow: hidden;
 }

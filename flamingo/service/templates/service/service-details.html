@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block pageTitle %}
+	{{ details.pagetitle }}
+{% endblock %}
+
+{% block content %}
+<section class="flex-col gap-4 ai-center">
+	<span class="ts-dark-2 text-accent text-center text-3xl bold ls-10">{{ details.title }}</span>
+	<p class="secondary-700 text-primary bold mx-10 my-6 p-8 b-sm br-2 shadow-sm">{{ details.blob }}</p>
+	<ul class="flex-col gap-4 m-auto mb-4">
+		{% for item in details.services %}
+			<li class="mx-5">
+				{{ item.title }}
+				{% if item.caption  %}
+					<br />
+					<span class="italic text-sm text-primary">{{ item.caption }}</span>
+				{% endif %}
+			</li>
+		{% endfor %}
+	</ul>
+	{% include 'components/contact-form.html' %}
+</section>
+<script>
+	useExpandingContactForm({
+		serviceValue: '{{ details.codename }}'
+	})
+</script>
+{% endblock %}

@@ -9,8 +9,9 @@ function useExpandingContactForm(options = {}) {
         // HIDE CLOSE LINK
         const close = btn.querySelector('#contact-close') || document.createElement('span')
         if (!close.innerText) {
-          close.innerText = 'Close'
+          close.innerText = 'x'
           close.id = 'contact-close'
+          close.classList.add('accent-bubble-sm')
           btn.appendChild(close)
         }
         close.classList.toggle('d-none')
