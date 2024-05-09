@@ -2,7 +2,15 @@ from django.shortcuts import render
 from _data.services import pages
 
 def home(request):
-	return render(request, 'service/service-home.html', {})
+	return render(request, 'service/service-home.html', {
+		'pages': [
+			pages['pools'],
+			pages['assembly'],
+			pages['hauling'],
+			pages['cleanup'],
+			pages['etc']
+		]
+	})
 
 def hauling(req):
 	return render(req, 'service/service-details.html', {

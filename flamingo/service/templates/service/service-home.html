@@ -17,32 +17,35 @@ PBJ Service Co
       At <span class="italic bold">PBJ Service</span>, we strive to bring our customers a hassle-free service experience. We show up on time, we complete the job, and we leave no mess behind for you to deal with!
     </p>
     <h2 class="ts-secondary-2 text-primary w-100">Our Services</h2>
-    <section id="new-arrivals" class='white b-sm py-2 px-4 shadow-sm flex-col'>
-      <h2 class="text-accent text-center underline">Pool Maintenance</h2>
-      <p class="secondary-700 text-primary bold mx-10 my-6 p-8 b-sm br-2 shadow-sm">Expert service guaranteed to keep your summer fun a hassle free experience.</p>
+    {% for details in pages %}
+    <section class="white b-sm py-2 px-4 shadow-sm flex-col">
+      <span class="ts-dark-2 text-accent text-center text-3xl bold ls-10">{{ details.title }}</span>
+      <p class="secondary-700 text-primary bold mx-10 my-6 p-8 b-sm br-2 shadow-sm">{{ details.blob }}</p>
       <ul class="flex-col gap-4 m-auto mb-4">
-        <li class="mx-5">
-          Opening & Closing
-          <br />
-          <span class="italic text-sm text-primary">Openings from only $35!</span>
-        </li>
-        <li class="mx-5">Weekly Maintenance</li>
-        <li class="mx-5">Filter Repair</li>
+        {% for item in details.services %}
+          <li class="mx-5">
+            {{ item.title }}
+            {% if item.caption  %}
+              <br />
+              <span class="italic text-sm text-primary">{{ item.caption }}</span>
+            {% endif %}
+          </li>
+        {% endfor %}
       </ul>
       {% include 'components/contact-form.html' %}
-      {% include 'components/contact-form.html' %}
-      <script>
-        useExpandingContactForm({
-          // formId: [],
-          serviceValue: [
-            'pools',
-            'assembly',
-            'hauling',
-            'cleanup',
-            'etc'
-          ]
-        })
-      </script>
     </section>
+    {% endfor %}
+    <script>
+      useExpandingContactForm({
+        // formId: [],
+        serviceValue: [
+          'pools',
+          'assembly',
+          'hauling',
+          'cleanup',
+          'etc'
+        ]
+      })
+    </script>
   </div>
 {% endblock %}
