@@ -1,3 +1,5 @@
+{% load static %}
+
 <footer class="text-sm flex jc-between gap-4 px-6">
 <div class="footer-column f-1">
   <h4>Explore</h4>
@@ -12,21 +14,31 @@
   </ul>
 </div>
 <div class="footer-column f-1">
-  <h4>Affiliates</h4>
-  <p>Visit our affiliate partners:</p>
-  <ul>
-    <li><a href="#">Affiliate Link 1</a></li>
-    <li><a href="#">Affiliate Link 2</a></li>
-    <li><a href="#">Affiliate Link 3</a></li>
+  <h4>Peak Bound Network</h4>
+  <p class="italic text-xs">Discover more through our partners:</p>
+  <ul class="footer-links my-2">
+    <li class="footer-link">
+      <a href="/">Peak Bound Journeys</a>
+      <span class="ms-1 italic text-xs">Guided Hiking Tours</span>
+    </li>
+    <li class="footer-link">
+      <a href="/service">PBJ Service Co</a>
+      <span class="ms-1 italic text-xs">Home Services</span>
+    </li>
+    <li class="footer-link">
+      <a href="/shop">PB Deals</a>
+      <span class="ms-1 italic text-xs">New & Used Items at HUGE Discounts</span>
+    </li>
   </ul>
   <p>© 2024 Peak Bound Journeys. All rights reserved.</p>
 </div>
 <div class="footer-column f-1 text-center">
-  <h4>Company Overview</h4>
+	<img src="{% static 'img/logo.png' %}" height="20px" class="light-mask" alt="Logo" />
+  <!-- <h4>Company Overview</h4> -->
   <p>Peak Bound Journeys is a New Jersey based company that offers outdoor adventure and wellness experiences, promoting an active lifestyle and exploration of nature.</p>
   <div class="badges">
-    <img src="accepted-payment.png" alt="Accepted Payment Types">
-    <img src="security-badge.png" alt="Security Badge">
+    <!-- <img src="accepted-payment.png" alt="Accepted Payment Types"> -->
+    <!-- <img src="security-badge.png" alt="Security Badge"> -->
     <!-- Add other badges as needed -->
   </div>
 </div>

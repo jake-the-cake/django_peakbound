@@ -358,3 +358,34 @@ a.hover-accent:hover {
 	font-size: .8rem;
 	overflow: hidden;
 }
+
+.footer-links {
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+}
+
+.footer-link {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	padding:0;
+}
+
+.footer-link a {
+	background-image: linear-gradient(175deg, transparent, var(--secondary-300));
+	border-radius: 9999px;
+	transition: .2s color linear, .2s background-image linear, .2s font-weight linear;
+}
+
+.footer-link a:hover {
+	font-weight: 700;
+	color: var(--secondary);
+	background-image: linear-gradient(175deg, transparent, var(--accent-300));
+}
+
+.footer-link span::before {
+	content: '✦';
+	margin-right: .25rem;
+}

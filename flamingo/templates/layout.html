@@ -20,7 +20,7 @@
 			{% endblock %}
 		</div>
 	</main>
-	<footer>footer</footer>
+	{% include 'components/footer.html' with site=site links=links %}
 	<script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
