@@ -1,15 +1,8 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>
-		{% block pageTitle %}Welcome{% endblock %} | Peak Bound Journeys {% block subPageTitle %}{% endblock %}
-	</title>
-	<link rel="stylesheet" href="{% static 'css/quiggle.css' %}">
-	<link rel="stylesheet" href="{% static 'css/style.css' %}">
-	<script src="{% static 'js/forms.js' %}"></script>
+	{% include 'components/metadata.html' %}
 </head>
 <body>
 	{% include 'components/navbar.html' with text=text %}

@@ -18,6 +18,7 @@ function useExpandingContactForm(options = {}) {
         // FORM
         const form = btn.parentNode.querySelector('form')
         if (!form) return false
+        form.id = 'contact-form-' + idx
         if (options.serviceValue) form.querySelector('select').value = options.serviceValue[idx]
         form.onsubmit = (e) => {
           e.preventDefault()
