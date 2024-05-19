@@ -29,6 +29,7 @@ class Qform {
 
   useValidation( tests ) {
     this.resetErrors()
+    this.error = false
     Object.entries(tests).forEach( t => {
       tests[t[0]].forEach(field => {
         const result = this.validate(field, t[0])
@@ -40,7 +41,6 @@ class Qform {
           span.classList.add('form-error', 'ms-2')
           label.appendChild(span)
         }
-        else this.error = false
       })
     })
   }
@@ -63,11 +63,11 @@ class Qform {
     if (!element.value) return new Error(`This field is required -- (${ field })`)
   }
 
-  isEmail( field ) {
+  isEmail( field ) {    
     const element = this.getElementByName(field)
-    console.log(field)
-    console.log(element)
-    console.log(this.fields.indexOf(field))
+    const regex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/
+    console.log(regex, element.value)
+    if (!regex.test(element.value)) return new Error(`Invalid format -- (${ field })`)
   }
 
   getElementByName( name ) {
