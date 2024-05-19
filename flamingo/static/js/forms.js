@@ -20,11 +20,7 @@ function useExpandingContactForm(options = {}) {
         if (!form) return false
         form.id = 'contact-form-' + idx
         if (options.serviceValue) form.querySelector('select').value = options.serviceValue[idx]
-        form.onsubmit = (e) => {
-          e.preventDefault()
-          const data = new FormData(e.target)
-          console.log(data)
-        }
+        form.onsubmit = Handlers.contactFormSubmit(form.id)
         // BUTTON ONCLICK EVENT
         btn.onclick = (e) => {
           close.classList.toggle('d-none')

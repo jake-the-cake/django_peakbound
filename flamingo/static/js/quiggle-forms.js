@@ -33,9 +33,16 @@ class Qform {
 
 class Handlers {
   static contactFormSubmit( id ) {
-    this.form = new Qform(id)
-    if (!this.form) return new Error('Form ID not found')
-    console.log(this.form)
+    return ( e ) => {
+      e.preventDefault()
+      this.form = new Qform(id)
+      if (!this.form) return new Error('Form ID not found')
+      console.log(this.form)
+      fetch('/api/customer/add', {
+        method: 'POST',
+        body: JSON.stringify({"phone": "1234154545"})
+      })
+    }
   }
 }
 
