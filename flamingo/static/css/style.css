@@ -389,3 +389,7 @@ a.hover-accent:hover {
 	content: '✦';
 	margin-right: .25rem;
 }
+
+.form-error {
+	color: hsl(0, 88%, 40%);
+}

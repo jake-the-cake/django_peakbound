@@ -3,6 +3,7 @@ class Qform {
     this.form = document.getElementById(id) || null
     if (!this.form) return null
     this.id = String(id)
+    this.error = false
     this.getFormElements()
   }
 
@@ -22,10 +23,24 @@ class Qform {
     })
   }
 
+  resetErrors() {
+    this.form.querySelectorAll('.form-error').forEach( element => element.parentNode.removeChild(element))
+  }
+
   useValidation( tests ) {
+    this.resetErrors()
     Object.entries(tests).forEach( t => {
       tests[t[0]].forEach(field => {
         const result = this.validate(field, t[0])
+        if (result){
+          this.error = true
+          const span = document.createElement('span')
+          const label = this.getElementLabel(field)
+          span.innerText = result.message || 'error'
+          span.classList.add('form-error', 'ms-2')
+          label.appendChild(span)
+        }
+        else this.error = false
       })
     })
   }
@@ -49,10 +64,27 @@ class Qform {
   }
 
   isEmail( field ) {
-    const element = this.elements[this.fields.indexOf(field)]
+    const element = this.getElementByName(field)
     console.log(field)
     console.log(element)
     console.log(this.fields.indexOf(field))
+  }
+
+  getElementByName( name ) {
+    return this.elements.filter( element => element.name === name)[0] || null
+  }
+
+  getElementLabel( name ) {
+    return this.getElementByName(name)?.parentElement?.querySelector('label') ?? null
+  }
+
+  sendData() {
+    const json = {}
+    const formdata = new FormData(this.form)
+    Array.from(formdata).forEach(([ key, value ])=> {
+      json[key] = value
+    })
+    return JSON.stringify(json)
   }
 }
 
@@ -60,19 +92,20 @@ class Handlers {
   static contactFormSubmit( id ) {
     return ( e ) => {
       e.preventDefault()
-      this.form = new Qform(id)
-      if (!this.form) return new Error('Form ID not found')
-      console.log(this.form)
-      this.form.useValidation({
+      const form = new Qform(id)
+      if (!form) return new Error('Form ID not found')
+      form.useValidation({
         required: ['name', 'service'],
         phone: ['phone'],
         email: ['email'],
         unique: []
       })
-      fetch('/api/customer/add', {
-        method: 'POST',
-        body: JSON.stringify({"phone": "1234154545"})
-      })
+      if (form.error === false) {
+        fetch('/api/customer/add', {
+          method: 'POST',
+          body: form.sendData()
+        })
+      }
     }
   }
 }

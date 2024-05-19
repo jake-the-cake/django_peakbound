@@ -19,6 +19,7 @@ def get_items(request):
 @api_view(['POST'])
 def new_message( req ):
 	body = get_body(req)
+	print(body)
 	c_code = body['phone'] or create_char_code(10, 'num')
 	c = None
 	if Customer.objects.count() > 0:
@@ -26,8 +27,8 @@ def new_message( req ):
 	if not c:	
 		c = Customer(
 		customer_code = c_code,
-		# name = body['name'],
-		# email = body['email'],
+		name = body['name'],
+		email = body['email'],
 		# visitor_ids = []
 	)
 		print(c)

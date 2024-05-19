@@ -60,6 +60,9 @@ class Customer(models.Model):
 	email = models.EmailField()
 	visitor_ids = models.ManyToManyField( Visitor, null = True, default=None )
 	created = models.DateTimeField( auto_now_add = True )
+	def __str__(self):
+			return ' '.join(['Customer', self.customer_code])
+	
 
 ###
 '''
