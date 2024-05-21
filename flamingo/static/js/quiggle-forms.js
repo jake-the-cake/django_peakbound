@@ -4,6 +4,7 @@ class Qform {
     if (!this.form) return null
     this.id = String(id)
     this.error = false
+    this.errorResponse = null
     this.getFormElements()
   }
 
@@ -32,14 +33,15 @@ class Qform {
     this.error = false
     Object.entries(tests).forEach( t => {
       tests[t[0]].forEach(field => {
-        const result = this.validate(field, t[0])
-        if (result){
+        const { errorResponse } = this.validate(field, t[0])
+        if (errorResponse){
           this.error = true
           const span = document.createElement('span')
           const label = this.getElementLabel(field)
-          span.innerText = result.message || 'error'
+          span.innerText = errorResponse.message || 'error'
           span.classList.add('form-error', 'ms-2')
           label.appendChild(span)
+          this.errorResponse = null
         }
       })
     })
@@ -49,7 +51,7 @@ class Qform {
     switch( validation ) {
       case 'required': return this.isRequired(field)
       case 'unique': return this.isRequired(field)
-      case 'phone': return this.isRequired(field)
+      case 'phone': return this.isPhone(field)
       case 'email': return this.isEmail(field)
       default: return
     }
@@ -60,14 +62,24 @@ class Qform {
     if (typeof index !== 'number') return console.warn('warning')
     const element = this.elements[index]
     if (!element) return console.warn(`Field name not found -- (${ field })`)
-    if (!element.value) return new Error(`This field is required -- (${ field })`)
+    if (!element.value) this.errorResponse = new Error(`This field is required -- (${ field })`)
+    return this
+  }
+
+  isPhone( field ) {
+    const element = this.getElementByName(field)
+    const regex = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/
+    console.log(regex.test(element.value))
+    if (!regex.test(element.value)) this.errorResponse = new Error(`Invalid format -- (${ field })`)
+    return this
   }
 
   isEmail( field ) {    
     const element = this.getElementByName(field)
+    if (!element) return console.warn(`Field name not found -- (${ field })`)
     const regex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/
-    console.log(regex, element.value)
-    if (!regex.test(element.value)) return new Error(`Invalid format -- (${ field })`)
+    if (!regex.test(element.value)) this.errorResponse = new Error(`Invalid format -- (${ field })`)
+    return this
   }
 
   getElementByName( name ) {
@@ -95,7 +107,7 @@ class Handlers {
       const form = new Qform(id)
       if (!form) return new Error('Form ID not found')
       form.useValidation({
-        required: ['name', 'service'],
+        required: ['name', 'service', 'phone'],
         phone: ['phone'],
         email: ['email'],
         unique: []
